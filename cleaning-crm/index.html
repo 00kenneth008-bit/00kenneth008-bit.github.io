@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cleaning Company CRM — a Notion HQ for your cleaning business</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#1a2332; --navy-deep:#121a26; --teal:#0F766E; --teal-bright:#14B8A6;
+    --sky:#0369A1; --seafoam:#a8dadc; --paper:#f1faee; --ink:#14201E;
+    --muted:#475569; --line:#d9e8e4; --card:#ffffff;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{font-family:"Inter",system-ui,sans-serif; background:var(--paper); color:var(--ink);
+    font-size:17px; line-height:1.6; -webkit-font-smoothing:antialiased;}
+  a{color:var(--teal);}
+  .wrap{max-width:1060px; margin:0 auto; padding:0 28px;}
+  /* ---------- hero ---------- */
+  .hero{background:var(--navy); color:#f1faee; padding:76px 0 64px;}
+  .hero-grid{display:grid; grid-template-columns:1.05fr 0.95fr; gap:48px; align-items:center;}
+  .hero h1{font-family:"Archivo",sans-serif; font-weight:800; font-size:52px; line-height:1.06;
+    letter-spacing:-0.02em; color:#ffffff;}
+  .hero h1 em{font-style:normal; color:var(--teal-bright);}
+  .hero .lede{margin-top:20px; font-size:19px; line-height:1.6; color:#c9d8d5; max-width:34ch;}
+  .hero .price-row{display:flex; align-items:baseline; gap:14px; margin-top:28px;}
+  .hero .price{font-family:"Archivo",sans-serif; font-weight:800; font-size:36px; color:#ffffff;}
+  .hero .price-note{font-size:15px; color:#8fa8a4;}
+  .cta-row{display:flex; gap:14px; margin-top:22px; flex-wrap:wrap; align-items:center;}
+  .btn{display:inline-flex; align-items:center; gap:8px; background:var(--teal-bright); color:#062a28;
+    font-weight:700; font-size:17px; padding:14px 26px; border-radius:10px; text-decoration:none;
+    border:0; cursor:pointer;}
+  .btn:hover{background:#2dd4bf;}
+  .btn-ghost{display:inline-flex; align-items:center; gap:8px; color:#a8dadc; font-weight:600;
+    font-size:16px; text-decoration:none; padding:14px 6px;}
+  .btn-ghost:hover{color:#ffffff;}
+  .hero-art img{width:100%; height:auto; display:block;}
+  .hero .fine{margin-top:18px; font-size:13.5px; color:#7d938f;}
+  /* ---------- sections ---------- */
+  section{padding:64px 0;}
+  section h2{font-family:"Archivo",sans-serif; font-weight:700; font-size:32px;
+    letter-spacing:-0.015em; line-height:1.2; margin-bottom:10px;}
+  section .sub{color:var(--muted); font-size:17px; max-width:62ch; margin-bottom:32px;}
+  /* ---------- databases table ---------- */
+  table{width:100%; border-collapse:collapse; background:var(--card); border:1px solid var(--line);
+    border-radius:12px; overflow:hidden;}
+  th,td{text-align:left; padding:16px 20px; vertical-align:top; border-bottom:1px solid var(--line);}
+  tr:last-child td{border-bottom:0;}
+  th{font-size:13px; font-weight:600; color:var(--muted); letter-spacing:0.02em;}
+  td .db-name{font-weight:700; font-size:17px; display:flex; align-items:center; gap:10px;}
+  td .db-name svg{width:20px; height:20px; color:var(--teal); flex:none;}
+  td .rows{font-family:"Archivo",sans-serif; font-weight:700; font-size:17px; color:var(--teal);}
+  td p{color:var(--muted); font-size:15px; margin-top:2px;}
+  /* ---------- setup steps ---------- */
+  .steps{display:grid; grid-template-columns:repeat(3,1fr); gap:20px;}
+  .step{border-top:3px solid var(--teal); padding-top:18px;}
+  .step .n{font-family:"Archivo",sans-serif; font-weight:800; font-size:28px; color:var(--teal);}
+  .step h3{font-size:18px; margin:8px 0 6px;}
+  .step p{color:var(--muted); font-size:15.5px;}
+  .step .time{font-size:13.5px; font-weight:600; color:var(--teal); margin-top:8px;}
+  /* ---------- numbers ---------- */
+  .numbers{background:var(--navy); color:#f1faee;}
+  .numbers h2{color:#ffffff;}
+  .numbers .sub{color:#9db4b0;}
+  .num-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:20px;}
+  .num{border-left:3px solid var(--teal-bright); padding-left:18px;}
+  .num .v{font-family:"Archivo",sans-serif; font-weight:800; font-size:34px; color:#ffffff; line-height:1.1;}
+  .num .k{font-size:14.5px; color:#9db4b0; margin-top:6px;}
+  /* ---------- buy ---------- */
+  .buy-grid{display:grid; grid-template-columns:1.1fr 0.9fr; gap:40px; align-items:start;}
+  .check-list{list-style:none;}
+  .check-list li{display:flex; gap:12px; align-items:flex-start; padding:10px 0;
+    border-bottom:1px solid var(--line); font-size:16.5px;}
+  .check-list li:last-child{border-bottom:0;}
+  .check-list svg{width:20px; height:20px; color:var(--teal); flex:none; margin-top:3px;}
+  .buy-card{background:var(--navy); color:#f1faee; border-radius:16px; padding:32px;}
+  .buy-card .p{font-family:"Archivo",sans-serif; font-weight:800; font-size:44px; color:#fff;}
+  .buy-card .p span{font-size:17px; font-weight:600; color:#9db4b0;}
+  .buy-card p{color:#c9d8d5; font-size:15.5px; margin:12px 0 20px;}
+  .buy-card .btn{width:100%; justify-content:center;}
+  .buy-card .fine{margin-top:14px; font-size:13.5px; color:#7d938f; text-align:center;}
+  footer{background:var(--navy-deep); color:#7d938f; padding:28px 0; font-size:14px;}
+  footer a{color:#a8dadc;}
+  @media (max-width:820px){
+    .hero-grid,.buy-grid{grid-template-columns:1fr;}
+    .hero h1{font-size:38px;}
+    .steps{grid-template-columns:1fr;}
+    .num-grid{grid-template-columns:repeat(2,1fr);}
+    section{padding:48px 0;}
+    .hero-art{order:-1;}
+    .hero-art img{max-width:420px; margin:0 auto;}
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <h1>Run your cleaning company from <em>one Notion HQ.</em></h1>
+      <p class="lede">Clients, jobs, invoices, and rebookings in four linked databases. No more chasing names across notebooks, chats, and spreadsheets.</p>
+      <div class="price-row">
+        <span class="price">$24</span>
+        <span class="price-note">one-time payment, yours to keep</span>
+      </div>
+      <div class="cta-row">
+        <a class="btn" href="https://kennyverse4462.gumroad.com/l/cleaning-company-crm">Get it on Gumroad</a>
+        <a class="btn-ghost" href="https://kennyverse4462.gumroad.com/l/cleaning-company-crm">Try the free Lite sample</a>
+      </div>
+      <p class="fine">File package, not a share link. Import four CSVs in 10 minutes with the included setup guide.</p>
+    </div>
+    <div class="hero-art">
+      <img src="cover-illustration-transparent.png" alt="Cleaning Company CRM: spray bottle, schedule, client list, and revenue chart linked together">
+    </div>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <h2>What is inside</h2>
+    <p class="sub">Four databases, ten views, one dashboard. Each one tracks a real part of the business, and they link to each other.</p>
+    <table>
+      <thead>
+        <tr><th>Database</th><th>Sample rows</th><th>What it tracks</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="db-name"><svg class="lucide lucide-users" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" /><path d="M16 3.128a4 4 0 0 1 0 7.744" /><path d="M22 21v-2a4 4 0 0 0-3-3.87" /><circle cx="9" cy="7" r="4" /></svg>Clients</span></td>
+          <td><span class="rows">6</span></td>
+          <td><p>Every household and business you clean, with contact, home type, and how often they book.</p></td>
+        </tr>
+        <tr>
+          <td><span class="db-name"><svg class="lucide lucide-calendar-check" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><path d="M8 2v3" /><path d="M16 2v3" /><rect x="3" y="3" width="18" height="18" rx="2" /><path d="M3 9h18" /><path d="m9 15 2 2 4-4" /></svg>Bookings</span></td>
+          <td><span class="rows">8</span></td>
+          <td><p>Each job on the calendar, linked to its client, with service type, date, and status.</p></td>
+        </tr>
+        <tr>
+          <td><span class="db-name"><svg class="lucide lucide-receipt" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><path d="M12 17V7" /><path d="M16 8h-6a2 2 0 0 0 0 4h4a2 2 0 0 1 0 4H8" /><path d="M4 3a1 1 0 0 1 1-1 1.3 1.3 0 0 1 .7.2l.933.6a1.3 1.3 0 0 0 1.4 0l.934-.6a1.3 1.3 0 0 1 1.4 0l.933.6a1.3 1.3 0 0 0 1.4 0l.933-.6a1.3 1.3 0 0 1 1.4 0l.934.6a1.3 1.3 0 0 0 1.4 0l.933-.6A1.3 1.3 0 0 1 19 2a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1 1.3 1.3 0 0 1-.7-.2l-.933-.6a1.3 1.3 0 0 0-1.4 0l-.934.6a1.3 1.3 0 0 1-1.4 0l-.933-.6a1.3 1.3 0 0 0-1.4 0l-.933.6a1.3 1.3 0 0 1-1.4 0l-.934-.6a1.3 1.3 0 0 0-1.4 0l-.933.6a1.3 1.3 0 0 1-.7.2 1 1 0 0 1-1-1z" /></svg>Payments</span></td>
+          <td><span class="rows">8</span></td>
+          <td><p>Every invoice and payment, linked to its booking, so you can see what is paid and what is owed.</p></td>
+        </tr>
+        <tr>
+          <td><span class="db-name"><svg class="lucide lucide-bell-ring" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><path d="M10.268 21a2 2 0 0 0 3.464 0" /><path d="M22 8c0-2.3-.8-4.3-2-6" /><path d="M3.262 15.326A1 1 0 0 0 4 17h16a1 1 0 0 0 .74-1.673C19.41 13.956 18 12.499 18 8A6 6 0 0 0 6 8c0 4.499-1.411 5.956-2.738 7.326" /><path d="M4 2C2.8 3.7 2 5.7 2 8" /></svg>Follow-ups</span></td>
+          <td><span class="rows">6</span></td>
+          <td><p>Rebooking reminders for regular clients, so weekly and fortnightly jobs never slip.</p></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section style="padding-top:0;">
+  <div class="wrap">
+    <h2>Set up in 10 minutes</h2>
+    <p class="sub">Three steps, in order. No Notion experience needed beyond a free account.</p>
+    <div class="steps">
+      <div class="step">
+        <div class="n">1</div>
+        <h3>Import the four CSVs</h3>
+        <p>Clients first, then Bookings, Payments, and Follow-ups. Notion builds each database for you.</p>
+        <div class="time">About 5 minutes</div>
+      </div>
+      <div class="step">
+        <div class="n">2</div>
+        <h3>Link them together</h3>
+        <p>Turn four text fields into relations. This is the only manual linking in the whole setup.</p>
+        <div class="time">About 3 minutes</div>
+      </div>
+      <div class="step">
+        <div class="n">3</div>
+        <h3>Open the dashboard</h3>
+        <p>Your Cleaning HQ is ready: today&rsquo;s jobs, unpaid invoices, and who to rebook next.</p>
+        <div class="time">About 2 minutes</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="numbers">
+  <div class="wrap">
+    <h2>Built on real numbers</h2>
+    <p class="sub">The sample data in the pack is a working cleaning company, not placeholder text. These are its figures.</p>
+    <div class="num-grid">
+      <div class="num"><div class="v">$540</div><div class="k">collected in the sample data</div></div>
+      <div class="num"><div class="v">$1,360</div><div class="k">receivable, still to collect</div></div>
+      <div class="num"><div class="v">$85</div><div class="k">overdue on one invoice only</div></div>
+      <div class="num"><div class="v">10</div><div class="k">views across the four databases</div></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap buy-grid">
+    <div>
+      <h2>What you get</h2>
+      <ul class="check-list">
+        <li><svg class="lucide lucide-check" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><path d="M20 6 9 17l-5-5" /></svg><span>Four CSV files, ready to import: Clients, Bookings, Payments, Follow-ups</span></li>
+        <li><svg class="lucide lucide-check" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><path d="M20 6 9 17l-5-5" /></svg><span>Step-by-step setup guide, 10 minutes from zero to working</span></li>
+        <li><svg class="lucide lucide-check" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><path d="M20 6 9 17l-5-5" /></svg><span>Cleaning HQ dashboard with 10 views, including revenue by month</span></li>
+        <li><svg class="lucide lucide-check" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><path d="M20 6 9 17l-5-5" /></svg><span>Free Lite sample: a 3-row Clients file to try before you buy</span></li>
+        <li><svg class="lucide lucide-check" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><path d="M20 6 9 17l-5-5" /></svg><span>Works on Notion&rsquo;s free plan, no paid upgrade needed</span></li>
+      </ul>
+    </div>
+    <div class="buy-card">
+      <div class="p">$24 <span>one time</span></div>
+      <p>A cleaning company CRM that pays for itself with one rebooked client. No subscription, no per-seat fee.</p>
+      <a class="btn" href="https://kennyverse4462.gumroad.com/l/cleaning-company-crm">Get it on Gumroad</a>
+      <p class="fine">Secure checkout on Gumroad. Free Lite sample included in the pack.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    Cleaning Company CRM &middot; a Notion template by kenneth008 &middot; <a href="https://kennyverse4462.gumroad.com/l/cleaning-company-crm">kennyverse4462.gumroad.com/l/cleaning-company-crm</a>
+  </div>
+</footer>
+
+</body>
+</html>
