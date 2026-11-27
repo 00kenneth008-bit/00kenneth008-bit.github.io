@@ -1,0 +1,200 @@
+/* kenneth008 — content hub
+   Ledger vernacular: ink on paper, ruled lines, one deep green.
+   Fraunces for display, Inter for body. Quiet everywhere except the ledger. */
+
+:root {
+  --paper: #f7f5ef;
+  --wash: #efead9;
+  --white: #fffdf8;
+  --ink: #1d1b18;
+  --muted: #6e685c;
+  --rule: #e2dccc;
+  --green: #2d6a4f;
+  --green-deep: #1f4d38;
+  --red: #b3402a;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "Inter", -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 17px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--green); text-decoration: none; }
+a:hover { text-decoration: underline; }
+a:focus-visible { outline: 2px solid var(--green); outline-offset: 3px; }
+
+.wrap { max-width: 1024px; margin: 0 auto; padding: 0 24px; }
+.narrow { max-width: 700px; }
+
+/* ---- top bar ---- */
+.top { border-bottom: 1px solid var(--rule); background: var(--paper); }
+.top-in {
+  display: flex; align-items: baseline; justify-content: space-between;
+  gap: 16px; padding-top: 18px; padding-bottom: 18px; flex-wrap: wrap;
+}
+.wordmark {
+  font-family: "Fraunces", Georgia, "Times New Roman", serif;
+  font-weight: 700; font-size: 26px; letter-spacing: -0.01em;
+  color: var(--ink);
+}
+.wordmark:hover { text-decoration: none; color: var(--green); }
+.top nav { display: flex; gap: 28px; font-size: 15px; }
+.top nav a { color: var(--ink); }
+.top nav a:hover { color: var(--green); }
+
+/* ---- hero ---- */
+.hero { padding: 72px 0 56px; border-bottom: 1px solid var(--rule); }
+.hero h1 {
+  font-family: "Fraunces", Georgia, serif;
+  font-weight: 600;
+  font-size: clamp(38px, 6vw, 60px);
+  line-height: 1.08; letter-spacing: -0.015em;
+  margin: 0 0 20px; max-width: 16em;
+}
+.hero p.lede { font-size: 19px; line-height: 1.6; color: var(--muted); max-width: 34em; margin: 0 0 28px; }
+.hero .actions { display: flex; gap: 14px; flex-wrap: wrap; }
+
+.btn {
+  display: inline-block; background: var(--green); color: #fff;
+  padding: 12px 22px; border-radius: 4px; font-weight: 600; font-size: 16px;
+}
+.btn:hover { background: var(--green-deep); text-decoration: none; }
+.btn-ghost {
+  display: inline-block; background: transparent; color: var(--ink);
+  padding: 12px 22px; border: 1px solid var(--ink); border-radius: 4px;
+  font-weight: 600; font-size: 16px;
+}
+.btn-ghost:hover { border-color: var(--green); color: var(--green); text-decoration: none; }
+
+/* ---- sections ---- */
+section.block { padding: 56px 0; border-bottom: 1px solid var(--rule); }
+section.block h2 {
+  font-family: "Fraunces", Georgia, serif;
+  font-weight: 600; font-size: 32px; letter-spacing: -0.01em;
+  margin: 0 0 8px;
+}
+.section-note { color: var(--muted); margin: 0 0 28px; max-width: 38em; }
+
+/* ---- ledger (the one memorable element) ---- */
+.ledger { border-top: 2px solid var(--ink); }
+.ledger-row {
+  display: grid;
+  grid-template-columns: 1fr 110px 96px;
+  gap: 20px; align-items: baseline;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--rule);
+}
+.ledger-row h3 { margin: 0 0 4px; font-size: 19px; font-weight: 650; }
+.ledger-row h3 a { color: var(--ink); }
+.ledger-row h3 a:hover { color: var(--green); }
+.ledger-row p { margin: 0; color: var(--muted); font-size: 15px; line-height: 1.55; }
+.ledger-price {
+  font-family: "Fraunces", Georgia, serif; font-weight: 700; font-size: 20px;
+  text-align: right; white-space: nowrap;
+}
+.ledger-price .free { color: var(--green); }
+.ledger-link { text-align: right; font-size: 15px; font-weight: 600; white-space: nowrap; }
+
+/* ---- guide list ---- */
+.guide-row {
+  display: grid; grid-template-columns: 1fr auto; gap: 20px; align-items: baseline;
+  padding: 20px 0; border-bottom: 1px solid var(--rule);
+}
+.guide-row:first-of-type { border-top: 2px solid var(--ink); }
+.guide-row h3 { margin: 0 0 4px; font-size: 19px; font-weight: 650; }
+.guide-row h3 a { color: var(--ink); }
+.guide-row h3 a:hover { color: var(--green); }
+.guide-row p { margin: 0; color: var(--muted); font-size: 15px; }
+.guide-row .mins { color: var(--muted); font-size: 14px; white-space: nowrap; }
+
+/* ---- about ---- */
+.about p { max-width: 36em; }
+.about p + p { margin-top: 14px; }
+
+/* ---- footer ---- */
+footer { padding: 40px 0 56px; }
+footer .foot-grid { display: flex; justify-content: space-between; gap: 32px; flex-wrap: wrap; }
+footer p { margin: 0 0 8px; color: var(--muted); font-size: 15px; max-width: 34em; }
+footer nav { display: flex; flex-direction: column; gap: 6px; font-size: 15px; }
+footer .fine { margin-top: 28px; font-size: 13px; color: var(--muted); }
+
+/* ---- product pages ---- */
+.crumb { font-size: 14px; color: var(--muted); margin: 40px 0 16px; }
+.crumb a { color: var(--muted); }
+.product-head h1 {
+  font-family: "Fraunces", Georgia, serif; font-weight: 600;
+  font-size: clamp(34px, 5vw, 48px); line-height: 1.1; letter-spacing: -0.015em;
+  margin: 0 0 12px; max-width: 18em;
+}
+.price-line { font-size: 19px; margin: 0 0 8px; }
+.price-line strong {
+  font-family: "Fraunces", Georgia, serif; font-size: 24px; font-weight: 700;
+}
+.price-line .one-time { color: var(--muted); font-size: 15px; }
+.buy-box {
+  background: var(--wash); border: 1px solid var(--rule); border-radius: 6px;
+  padding: 22px 24px; margin: 28px 0 40px;
+  display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap;
+}
+.buy-box p { margin: 0; max-width: 30em; }
+.buy-box .btn { white-space: nowrap; }
+.product-body h2 {
+  font-family: "Fraunces", Georgia, serif; font-weight: 600; font-size: 26px;
+  margin: 40px 0 12px;
+}
+.product-body p { max-width: 38em; }
+.product-body ul { max-width: 38em; padding-left: 22px; }
+.product-body li { margin-bottom: 8px; }
+.product-body li::marker { color: var(--green); }
+.note-box {
+  background: var(--white); border: 1px solid var(--rule); border-left: 4px solid var(--green);
+  border-radius: 4px; padding: 16px 20px; margin: 28px 0; max-width: 38em;
+}
+.note-box p { margin: 0; }
+.related { margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--rule); }
+.related h2 { font-size: 22px; margin-bottom: 12px; }
+.related ul { list-style: none; padding: 0; margin: 0; }
+.related li { margin-bottom: 6px; }
+
+/* ---- articles ---- */
+.article-head { padding: 56px 0 8px; }
+.article-head h1 {
+  font-family: "Fraunces", Georgia, serif; font-weight: 600;
+  font-size: clamp(34px, 5vw, 48px); line-height: 1.12; letter-spacing: -0.015em;
+  margin: 0 0 14px; max-width: 18em;
+}
+.article-meta { color: var(--muted); font-size: 15px; margin: 0 0 8px; }
+.article-body { padding: 24px 0 8px; }
+.article-body p { max-width: 38em; }
+.article-body p.lead { font-size: 19px; line-height: 1.6; color: var(--ink); }
+.article-body h2 {
+  font-family: "Fraunces", Georgia, serif; font-weight: 600; font-size: 27px;
+  margin: 44px 0 12px;
+}
+.article-body ul, .article-body ol { max-width: 38em; padding-left: 22px; }
+.article-body li { margin-bottom: 8px; }
+.article-body li::marker { color: var(--green); }
+.article-cta {
+  background: var(--wash); border: 1px solid var(--rule); border-radius: 6px;
+  padding: 24px 26px; margin: 44px 0 8px; max-width: 38em;
+}
+.article-cta h2 { margin-top: 0; font-size: 24px; }
+.article-cta p { margin-bottom: 18px; }
+
+@media (max-width: 640px) {
+  .ledger-row { grid-template-columns: 1fr auto; }
+  .ledger-row .ledger-link { grid-column: 1 / -1; text-align: left; }
+  .ledger-price { text-align: left; }
+  .guide-row { grid-template-columns: 1fr; }
+  .hero { padding: 48px 0 40px; }
+  section.block { padding: 40px 0; }
+}
